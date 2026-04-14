@@ -1,13 +1,13 @@
 [
   {
     "id": "a1",
-    "name": "Rara Kinanti",
-    "username": "rarakinanti",
+    "name": "Deni Anugrah Hasibuan",
+    "username": "denihsb",
     "city": "Yogyakarta",
     "bio": "Ilustrator lepas yang terinspirasi dari mitologi Jawa dan alam tropis. Karya-karyaku menggabungkan elemen tradisional dengan sentuhan kontemporer.",
-    "avatar": "https://i.pravatar.cc/150?img=47",
-    "instagram": "rarakinanti.art",
-    "categories": ["Ilustrasi", "Digital Art"],
+    "avatar": "images/den.png",
+    "instagram": "denii.hsb",
+    "categories": ["Ilustrasi", "Sketsa", "Digital Art"],
     "artworkCount": 3,
     "totalApresiasi": 0
   },

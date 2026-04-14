@@ -5,11 +5,11 @@
     "artistId": "a1",
     "category": "Ilustrasi",
     "year": 2024,
-    "image": "https://picsum.photos/seed/dewilangit/800/600",
-    "thumbnail": "https://picsum.photos/seed/dewilangit/400/300",
-    "description": "Karya ini terinspirasi dari legenda Nyi Loro Kidul, sang Ratu Laut Selatan. Aku ingin menggambarkan sosoknya bukan sebagai sesuatu yang menakutkan, tapi sebagai representasi kekuatan alam yang agung dan misterius.",
-    "story": "Semalam sebelum menggambar ini, aku mimpi berjalan di tepi pantai Selatan saat bulan purnama. Mungkin itu yang mendorongku untuk akhirnya menuangkan interpretasiku tentang Nyi Loro Kidul ke atas kanvas digital.",
-    "tags": ["mitologi", "digital", "perempuan", "laut"],
+    "image": "images/digital.jpeg",
+    "thumbnail": "images/digital.jpeg",
+    "description": "Karya komisi digital pertamaku.",
+    "story": "-",
+    "tags": ["digital", "ilustrasi", "anime"],
     "apresiasi": 0
   },
   {
