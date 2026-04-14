@@ -40,15 +40,15 @@
   },
   {
     "id": "w4",
-    "title": "Sudut Braga",
+    "title": "Galaksi",
     "artistId": "a2",
     "category": "Fotografi",
     "year": 2024,
-    "image": "https://picsum.photos/seed/sudutbraga/800/600",
-    "thumbnail": "https://picsum.photos/seed/sudutbraga/400/300",
-    "description": "Jalan Braga di Bandung pada pukul 06.00 pagi. Sepi, berkabut tipis, dan menyimpan arsitektur kolonial yang megah. Momen sebelum kota ini terbangun.",
+    "image": "images/foto.jpg",
+    "thumbnail": "images/foto.jpg",
+    "description": "Pemandangan galaksi yang memukau dari permukaan bumi. Momen langka di mana bintang-bintang terlihat jelas dalam kegelapan malam.",
     "story": "Aku rela berangkat jam 5 subuh demi dapat cahaya dan suasana seperti ini. Tidak ada yang menyesal begitu matahari mulai mengintip dari balik gedung-gedung tua itu.",
-    "tags": ["bandung", "urban", "pagi", "arsitektur"],
+    "tags": ["galaksi", "alam", "malam", "bintang"],
     "apresiasi": 0
   },
   {
