@@ -1,0 +1,50 @@
+[
+  {
+    "id": "a1",
+    "name": "Rara Kinanti",
+    "username": "rarakinanti",
+    "city": "Yogyakarta",
+    "bio": "Ilustrator lepas yang terinspirasi dari mitologi Jawa dan alam tropis. Karya-karyaku menggabungkan elemen tradisional dengan sentuhan kontemporer.",
+    "avatar": "https://i.pravatar.cc/150?img=47",
+    "instagram": "rarakinanti.art",
+    "categories": ["Ilustrasi", "Digital Art"],
+    "artworkCount": 3,
+    "totalApresiasi": 0
+  },
+  {
+    "id": "a2",
+    "name": "Bimo Satriawan",
+    "username": "bimosatria",
+    "city": "Bandung",
+    "bio": "Fotografer jalanan yang mendokumentasikan kehidupan urban Indonesia. Tertarik pada kontras antara modernitas dan tradisi di kota-kota besar.",
+    "avatar": "https://i.pravatar.cc/150?img=12",
+    "instagram": "bimosatria.foto",
+    "categories": ["Fotografi"],
+    "artworkCount": 3,
+    "totalApresiasi": 0
+  },
+  {
+    "id": "a3",
+    "name": "Citra Dewi",
+    "username": "citradewi",
+    "city": "Jakarta",
+    "bio": "Desainer grafis dan mural artist. Suka mengeksplorasi tipografi eksperimental dan warna-warna berani yang mencerminkan energi kota.",
+    "avatar": "https://i.pravatar.cc/150?img=32",
+    "instagram": "citradewi.design",
+    "categories": ["Desain Grafis", "Digital Art"],
+    "artworkCount": 3,
+    "totalApresiasi": 0
+  },
+  {
+    "id": "a4",
+    "name": "Fajar Nugroho",
+    "username": "fajarnug",
+    "city": "Surabaya",
+    "bio": "Seniman digital yang bermain-main dengan konsep surealisme dan pop art Indonesia. Setiap karya adalah kritik sosial yang dibungkus keindahan visual.",
+    "avatar": "https://i.pravatar.cc/150?img=68",
+    "instagram": "fajarnug.art",
+    "categories": ["Digital Art", "Ilustrasi"],
+    "artworkCount": 3,
+    "totalApresiasi": 0
+  }
+]

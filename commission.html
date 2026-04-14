@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Komisi — ArtLocal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">Art<span>Local</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Galeri</a></li>
+      <li><a href="artists.html">Seniman</a></li>
+      <li><a href="favorites.html">Favorit</a></li>
+      <li><a href="commission.html">Komisi</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-icon" id="themeBtn" title="Ganti tema"></button>
+      <a href="favorites.html" class="btn-icon" title="Favorit saya">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="form-page">
+        <a href="javascript:history.back()" class="page-back" style="display:inline-flex;align-items:center;gap:8px;margin-bottom:32px;font-size:13px;color:var(--text-muted)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/></svg>
+          Kembali
+        </a>
+
+        <p class="hero-eyebrow">✦ Hubungi Seniman</p>
+        <h1 style="font-family:var(--font-display);font-size:clamp(32px,5vw,52px);font-weight:300;letter-spacing:-0.02em;margin-bottom:12px">
+          Request <em style="font-style:italic;color:var(--accent)">Komisi</em>
+        </h1>
+        <p style="color:var(--text-muted);font-size:15px;margin-bottom:40px;line-height:1.7">
+          Tertarik dengan karya seorang seniman? Kirimkan detail proyekmu dan kami akan menghubungkan kalian.
+        </p>
+
+        <!-- Seniman terpilih (jika dari profil) -->
+        <div id="selectedArtistBanner" style="display:none;margin-bottom:32px"></div>
+
+        <div id="commissionForm">
+          <div class="form-row">
+            <div class="form-group" id="grp-nama">
+              <label class="form-label" for="nama">Nama Lengkap *</label>
+              <input type="text" id="nama" class="form-input" placeholder="Nama kamu">
+              <div class="form-error">Nama wajib diisi</div>
+            </div>
+            <div class="form-group" id="grp-email">
+              <label class="form-label" for="email">Email *</label>
+              <input type="email" id="email" class="form-input" placeholder="email@kamu.com">
+              <div class="form-error">Email tidak valid</div>
+            </div>
+          </div>
+
+          <div class="form-group" id="grp-seniman">
+            <label class="form-label" for="seniman">Pilih Seniman *</label>
+            <select id="seniman" class="form-select">
+              <option value="">— Pilih seniman —</option>
+            </select>
+            <div class="form-error">Pilih seniman terlebih dahulu</div>
+          </div>
+
+          <div class="form-group" id="grp-jenis">
+            <label class="form-label" for="jenis">Jenis Karya *</label>
+            <select id="jenis" class="form-select">
+              <option value="">— Pilih jenis —</option>
+              <option>Ilustrasi Digital</option>
+              <option>Fotografi</option>
+              <option>Desain Logo / Brand</option>
+              <option>Poster / Flyer</option>
+              <option>Mural / Wall Art</option>
+              <option>Lainnya</option>
+            </select>
+            <div class="form-error">Pilih jenis karya</div>
+          </div>
+
+          <div class="form-group" id="grp-budget">
+            <label class="form-label" for="budget">Estimasi Budget</label>
+            <select id="budget" class="form-select">
+              <option value="">— Pilih range —</option>
+              <option>Di bawah Rp 500.000</option>
+              <option>Rp 500.000 – 1.000.000</option>
+              <option>Rp 1.000.000 – 3.000.000</option>
+              <option>Rp 3.000.000 – 5.000.000</option>
+              <option>Di atas Rp 5.000.000</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="grp-deskripsi">
+            <label class="form-label" for="deskripsi">Deskripsi Proyek *</label>
+            <textarea id="deskripsi" class="form-textarea" rows="5" placeholder="Ceritakan proyek yang kamu bayangkan — tema, ukuran, penggunaan karya, inspirasi, dll."></textarea>
+            <div class="form-error">Tolong isi deskripsi proyekmu</div>
+          </div>
+
+          <div class="form-group" id="grp-deadline">
+            <label class="form-label" for="deadline">Target Selesai</label>
+            <input type="date" id="deadline" class="form-input">
+          </div>
+
+          <button class="btn-primary" onclick="submitForm()" style="width:100%;padding:15px">
+            Kirim Request →
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- MODAL SUKSES -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal">
+      <div class="modal-icon">✉️</div>
+      <h2 class="modal-title">Request Terkirim!</h2>
+      <p class="modal-text">Terima kasih! Seniman yang kamu pilih akan segera menghubungimu melalui email.</p>
+      <a href="index.html" class="btn-primary" style="display:block;padding:13px">Kembali ke Galeri</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;width:100%">
+      <span class="footer-logo">Art<span>Local</span></span>
+      <span class="footer-text">Dibuat dengan ❤️ untuk komunitas seni lokal Indonesia</span>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script>
+    async function init() {
+      const artists = await fetchArtists();
+      const select = document.getElementById('seniman');
+      artists.forEach(a => {
+        const opt = document.createElement('option');
+        opt.value = a.id;
+        opt.textContent = `${a.name} (${a.city})`;
+        select.appendChild(opt);
+      });
+
+      // Pre-select dari URL param
+      const artistId = getParam('artist');
+      if (artistId) {
+        select.value = artistId;
+        const artist = artists.find(a => a.id === artistId);
+        if (artist) {
+          document.getElementById('selectedArtistBanner').style.display = 'block';
+          document.getElementById('selectedArtistBanner').innerHTML = `
+            <div style="display:flex;align-items:center;gap:12px;padding:16px;background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:4px">
+              <img src="${artist.avatar}" style="width:44px;height:44px;border-radius:50%;object-fit:cover">
+              <div>
+                <div style="font-weight:500;font-size:14px">${artist.name}</div>
+                <div style="font-size:12px;color:var(--text-muted)">Seniman terpilih · ${artist.city}</div>
+              </div>
+            </div>`;
+        }
+      }
+    }
+
+    function validate() {
+      let valid = true;
+      const fields = [
+        { id: 'nama', grp: 'grp-nama', check: v => v.trim().length >= 2 },
+        { id: 'email', grp: 'grp-email', check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+        { id: 'seniman', grp: 'grp-seniman', check: v => v !== '' },
+        { id: 'jenis', grp: 'grp-jenis', check: v => v !== '' },
+        { id: 'deskripsi', grp: 'grp-deskripsi', check: v => v.trim().length >= 20 },
+      ];
+      fields.forEach(f => {
+        const val = document.getElementById(f.id).value;
+        const ok = f.check(val);
+        document.getElementById(f.grp).classList.toggle('error', !ok);
+        if (!ok) valid = false;
+      });
+      return valid;
+    }
+
+    function submitForm() {
+      if (!validate()) {
+        showToast('⚠️ Lengkapi form terlebih dahulu');
+        return;
+      }
+      document.getElementById('successModal').classList.add('show');
+    }
+
+    init();
+  </script>
+</body>
+</html>

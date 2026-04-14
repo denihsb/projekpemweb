@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Seniman — ArtLocal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">Art<span>Local</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Galeri</a></li>
+      <li><a href="artists.html">Seniman</a></li>
+      <li><a href="favorites.html">Favorit</a></li>
+      <li><a href="commission.html">Komisi</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-icon" id="themeBtn" title="Ganti tema"></button>
+      <a href="favorites.html" class="btn-icon" title="Favorit saya">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <a href="artists.html" class="page-back">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/></svg>
+          Semua Seniman
+        </a>
+        <div id="artistProfile"></div>
+      </div>
+
+      <div class="stats-row" id="statsRow"></div>
+
+      <div class="gallery-grid" id="artistWorks">
+        <div class="loading">
+          <div class="loading-dot"></div>
+          <div class="loading-dot"></div>
+          <div class="loading-dot"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;width:100%">
+      <span class="footer-logo">Art<span>Local</span></span>
+      <span class="footer-text">Dibuat dengan ❤️ untuk komunitas seni lokal Indonesia</span>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script>
+    async function init() {
+      const id = getParam('id');
+      if (!id) { location.href = 'artists.html'; return; }
+
+      const [artist, artworks] = await Promise.all([getArtistById(id), getArtworksByArtist(id)]);
+      if (!artist) { location.href = 'artists.html'; return; }
+
+      document.title = `${artist.name} — ArtLocal`;
+
+      document.getElementById('artistProfile').innerHTML = `
+        <div class="artist-profile">
+          <img src="${artist.avatar}" alt="${artist.name}" class="artist-profile-avatar">
+          <div>
+            <h1 class="artist-profile-name">${artist.name}</h1>
+            <div class="artist-profile-city">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+              ${artist.city}
+            </div>
+            <p class="artist-profile-bio">${artist.bio}</p>
+            <a href="https://instagram.com/${artist.instagram}" target="_blank" class="artist-social">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></svg>
+              @${artist.instagram}
+            </a>
+            <div style="margin-top:16px">
+              <a href="commission.html?artist=${artist.id}" class="btn-primary" style="display:inline-block;padding:12px 24px">Request Komisi →</a>
+            </div>
+          </div>
+        </div>`;
+
+      const totalApresiasi = artworks.reduce((sum, w) => sum + LS.getApresiasiCount(w.id), 0);
+      document.getElementById('statsRow').innerHTML = `
+        <div class="stat-item">
+          <div class="stat-num">${artworks.length}</div>
+          <div class="stat-label">Karya</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">${totalApresiasi}</div>
+          <div class="stat-label">Apresiasi</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">${artist.categories.length}</div>
+          <div class="stat-label">Kategori</div>
+        </div>`;
+
+      document.getElementById('artistWorks').innerHTML = artworks.map(w => renderArtworkCard(w, artist)).join('');
+    }
+    init();
+  </script>
+</body>
+</html>

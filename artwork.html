@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Karya — ArtLocal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">Art<span>Local</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Galeri</a></li>
+      <li><a href="artists.html">Seniman</a></li>
+      <li><a href="favorites.html">Favorit</a></li>
+      <li><a href="commission.html">Komisi</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-icon" id="themeBtn" title="Ganti tema"></button>
+      <a href="favorites.html" class="btn-icon" title="Favorit saya">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <a href="javascript:history.back()" class="page-back" style="display:inline-flex;align-items:center;gap:8px;margin-top:32px;font-size:13px;color:var(--text-muted)">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/></svg>
+        Kembali
+      </a>
+
+      <div id="artworkDetail"></div>
+
+      <!-- Related works -->
+      <div class="section-header" id="relatedHeader" style="display:none">
+        <div>
+          <p class="section-eyebrow">Karya lainnya</p>
+          <h2 class="section-title">Dari seniman <em>ini</em></h2>
+        </div>
+      </div>
+      <div class="gallery-grid" id="relatedGrid"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;width:100%">
+      <span class="footer-logo">Art<span>Local</span></span>
+      <span class="footer-text">Dibuat dengan ❤️ untuk komunitas seni lokal Indonesia</span>
+    </div>
+  </footer>
+
+  <script src="js/utils.js"></script>
+  <script>
+    async function init() {
+      const id = getParam('id');
+      if (!id) { location.href = 'index.html'; return; }
+
+      const [artwork, artworks] = await Promise.all([getArtworkById(id), fetchArtworks()]);
+      if (!artwork) { location.href = 'index.html'; return; }
+
+      const artist = await getArtistById(artwork.artistId);
+      document.title = `${artwork.title} — ArtLocal`;
+
+      const isSaved = LS.isFavorite(id);
+      const isLiked = LS.isApresiasi(id);
+      const apresiasiCount = LS.getApresiasiCount(id);
+
+      document.getElementById('artworkDetail').innerHTML = `
+        <div class="artwork-detail">
+          <div class="artwork-main-image">
+            <img src="${artwork.image}" alt="${artwork.title}">
+          </div>
+          <div class="artwork-info">
+            <span class="artwork-category-badge">${artwork.category}</span>
+            <h1 class="artwork-title">${artwork.title}</h1>
+            <div class="artwork-year">${artwork.year}</div>
+
+            <div class="apresiasi-section">
+              <button class="btn-apresiasi ${isLiked ? 'active' : ''}" id="apresiasiBtn" onclick="handleApresiasi('${id}')">
+                <span id="apresiasiHeart">${isLiked ? '❤️' : '🤍'}</span>
+                Apresiasi
+              </button>
+              <div>
+                <div class="apresiasi-count" id="apresiasiCount">${apresiasiCount}</div>
+                <div class="apresiasi-label">apresiasi</div>
+              </div>
+            </div>
+
+            ${artist ? `
+            <div class="artwork-artist-mini" onclick="location.href='artist.html?id=${artist.id}'">
+              <img src="${artist.avatar}" alt="${artist.name}">
+              <div>
+                <div class="artwork-artist-mini-name">${artist.name}</div>
+                <div class="artwork-artist-mini-city">📍 ${artist.city}</div>
+              </div>
+            </div>` : ''}
+
+            <p class="artwork-desc-label">Tentang karya ini</p>
+            <p class="artwork-desc">${artwork.description}</p>
+
+            <div class="artwork-story">
+              <p class="artwork-desc-label" style="margin-bottom:8px">Cerita di balik karya</p>
+              <p>"${artwork.story}"</p>
+            </div>
+
+            <div class="artwork-tags">
+              ${artwork.tags.map(t => `<span class="tag">#${t}</span>`).join('')}
+            </div>
+
+            <div class="artwork-actions">
+              <button class="btn-outline ${isSaved ? 'saved' : ''}" id="favBtn" onclick="handleFavDetail('${id}')">
+                <span id="favBtnIcon">${isSaved ? '💛' : '🤍'}</span>
+                <span id="favBtnText">${isSaved ? 'Tersimpan' : 'Simpan'}</span>
+              </button>
+              <a href="commission.html${artist ? '?artist=' + artist.id : ''}" class="btn-primary">Request Komisi →</a>
+            </div>
+          </div>
+        </div>`;
+
+      // Related works
+      const related = artworks.filter(w => w.artistId === artwork.artistId && w.id !== id);
+      if (related.length > 0) {
+        document.getElementById('relatedHeader').style.display = 'flex';
+        document.getElementById('relatedGrid').innerHTML = related.map(w => renderArtworkCard(w, artist)).join('');
+      }
+    }
+
+    function handleApresiasi(id) {
+      const isNowLiked = LS.toggleApresiasi(id);
+      const count = LS.getApresiasiCount(id);
+      document.getElementById('apresiasiBtn').classList.toggle('active', isNowLiked);
+      document.getElementById('apresiasiHeart').textContent = isNowLiked ? '❤️' : '🤍';
+      document.getElementById('apresiasiCount').textContent = count;
+      showToast(isNowLiked ? '❤️ Terima kasih atas apresiasimu!' : 'Apresiasi dibatalkan');
+    }
+
+    function handleFavDetail(id) {
+      const isSaved = LS.toggleFavorite(id);
+      document.getElementById('favBtn').classList.toggle('saved', isSaved);
+      document.getElementById('favBtnIcon').textContent = isSaved ? '💛' : '🤍';
+      document.getElementById('favBtnText').textContent = isSaved ? 'Tersimpan' : 'Simpan';
+    }
+
+    init();
+  </script>
+</body>
+</html>
