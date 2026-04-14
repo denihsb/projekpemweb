@@ -1,7 +1,7 @@
 [
   {
     "id": "w1",
-    "title": "Dewi Langit",
+    "title": "Digital Commission #1",
     "artistId": "a1",
     "category": "Ilustrasi",
     "year": 2024,
@@ -14,28 +14,28 @@
   },
   {
     "id": "w2",
-    "title": "Pasar Pagi",
+    "title": "Pantai Dengan-mu",
     "artistId": "a1",
     "category": "Ilustrasi",
     "year": 2024,
-    "image": "https://picsum.photos/seed/pasarpagi/800/600",
-    "thumbnail": "https://picsum.photos/seed/pasarpagi/400/300",
-    "description": "Kesibukan pasar tradisional di pagi hari — riuh, penuh warna, dan hangat. Aku ingin menangkap energi itu dalam gaya ilustrasi yang sedikit naif dan playful.",
-    "story": "Setiap Minggu pagi aku selalu ke Pasar Beringharjo sama ibu. Ini karya persembahanku buat beliau.",
-    "tags": ["pasar", "tradisional", "pagi", "ramai"],
+    "image": "images/scenery.jpeg",
+    "thumbnail": "images/scenery.jpeg",
+    "description": "pemandangan sunset di pantai dengan nuansa hitam putih, terdapat pasangan yang sedang menikmati waktu senja berdua.",
+    "story": "Ketika angin malam berhembus lebih dingin dan sunyi dari biasanya, ini adalah kristalisasi akan kerinduanku kepada kekasihku.",
+    "tags": ["ilustrasi", "scenery", "senja", "pantai"],
     "apresiasi": 0
   },
   {
     "id": "w3",
-    "title": "Batik Kosmik",
+    "title": "The Evil god: Sukuna",
     "artistId": "a1",
-    "category": "Digital Art",
+    "category": "sketsa",
     "year": 2023,
-    "image": "https://picsum.photos/seed/batikkosmik/800/600",
-    "thumbnail": "https://picsum.photos/seed/batikkosmik/400/300",
-    "description": "Eksplorasi motif batik yang diproyeksikan ke ruang angkasa. Sebuah pertanyaan: bagaimana jika nenek moyang kita adalah penjelajah antariksa?",
-    "story": "Proyek pribadi yang lahir dari kegelisahan — kenapa kita harus memilih antara warisan budaya dan mimpi futuristik? Keduanya bisa hidup berdampingan.",
-    "tags": ["batik", "kosmik", "futuristik", "budaya"],
+    "image": "images/tradisional.jpeg",
+    "thumbnail": "images/tradisional.jpeg",
+    "description": "Sketsa yang menggambarkan kekuatan, keagungan dan kehebatan sukuna sang villain utama dari sebuah series anime berjudul Jujutsu Kaisen.",
+    "story": "Bentuk kekaguman terhadap bengis, jahat, kuat, angkuh dan beringas dari sang villain.",
+    "tags": ["tradisional", "sketsa", "bnw", "anime"],
     "apresiasi": 0
   },
   {
@@ -153,6 +153,45 @@
     "description": "Indomie sebagai objek seni surealis bergaya Salvador Dali. Karya kritik tentang bagaimana makanan instan telah menjadi bagian tak terpisahkan dari identitas nasional.",
     "story": "Waktu begadang ngerjain tugas dan makan Indomie jam 2 pagi, tiba-tiba kepikiran: ini basically identitas kita sebagai bangsa. Maka lahirlah karya ini.",
     "tags": ["indomie", "surealisme", "pop art", "kritik"],
+    "apresiasi": 0
+  },
+  {
+    "id": "w13",
+    "title": "Efen Digital Commission #1",
+    "artistId": "a5",
+    "category": "Ilustrasi",
+    "year": 2023,
+    "image": "images/fen1.jpeg",
+    "thumbnail": "images/fen1.jpeg",
+    "description": "Komisi gambar.",
+    "story": "-",
+    "tags": ["digital", "ilustrasi", "karakter", "komisi"],
+    "apresiasi": 0
+  },
+ {
+    "id": "w14",
+    "title": "Efen Digital Commission #2",
+    "artistId": "a5",
+    "category": "Ilustrasi",
+    "year": 2023,
+    "image": "images/fen2.jpeg",
+    "thumbnail": "images/fen2.jpeg",
+    "description": "Komisi gambar.",
+    "story": "-",
+    "tags": ["digital", "ilustrasi", "karakter", "komisi"],
+    "apresiasi": 0
+  },
+  {
+    "id": "w15",
+    "title": "Efen Digital Commission #3",
+    "artistId": "a5",
+    "category": "Ilustrasi",
+    "year": 2023,
+    "image": "images/fen3.jpeg",
+    "thumbnail": "images/fen3.jpeg",
+    "description": "Komisi gambar.",
+    "story": "-",
+    "tags": ["digital", "ilustrasi", "karakter", "komisi"],
     "apresiasi": 0
   }
 ]

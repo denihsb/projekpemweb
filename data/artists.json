@@ -3,9 +3,9 @@
     "id": "a1",
     "name": "Deni Anugrah Hasibuan",
     "username": "denihsb",
-    "city": "Yogyakarta",
-    "bio": "Ilustrator lepas yang terinspirasi dari mitologi Jawa dan alam tropis. Karya-karyaku menggabungkan elemen tradisional dengan sentuhan kontemporer.",
-    "avatar": "images/den.png",
+    "city": "Rantauprapat",
+    "bio": "Ilustrator serba bisa yang mencurahkan kreativitas tanpa batas dalam karyanya",
+    "avatar": "images/den1.png",
     "instagram": "denii.hsb",
     "categories": ["Ilustrasi", "Sketsa", "Digital Art"],
     "artworkCount": 3,
@@ -44,6 +44,18 @@
     "avatar": "https://i.pravatar.cc/150?img=68",
     "instagram": "fajarnug.art",
     "categories": ["Digital Art", "Ilustrasi"],
+    "artworkCount": 3,
+    "totalApresiasi": 0
+  },
+   {
+    "id": "a5",
+    "name": "Effenia Fahreza Siregar",
+    "username": "fennsrg",
+    "city": "Rantauprapat",
+    "bio": "Seniman digital yang berfokus pada karakter dan style anime",
+    "avatar": "images/fen.jpeg",
+    "instagram": "fennsrg",
+    "categories": ["Digital Art", "Ilustrasi", "Anime"],
     "artworkCount": 3,
     "totalApresiasi": 0
   }
